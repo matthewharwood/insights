@@ -1,0 +1,29 @@
+<div class="col-md-12">
+add a space
+<form ng-submit="registerSpace()">
+  <ul>
+    <li>
+      <label for="banner">Capture a banner image:</label>
+      <input type="text" ng-model="newSpace.banner" id="banner">
+    </li>
+    <li>
+        <label for="owner">The owner is:</label>
+        <input type="text" ng-model="newSpace.owner" id="owner">
+    </li>
+    <li>
+        <label for="name">The space name is:</label>
+        <input type="text" ng-model="newSpace.name" id="name">
+    </li>
+    <li>
+      <label for="info"> Tell us about this space</label>    
+      <textarea ng-model="newSpace.info" id="info" placeholder="Tell us what the space is like"></textarea>
+    </li>
+      <label for="active">Activity</label>
+      <input type="text" ng-model="newSpace.active" id="active" value="true">
+    </li>
+    <li>
+      <input type="submit" value="submit space">
+    </li>
+  <ul>
+</form>
+</div>
