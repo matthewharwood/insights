@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/mqtt/mqtt.socket').register(socket);
   require('../api/space/space.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }
