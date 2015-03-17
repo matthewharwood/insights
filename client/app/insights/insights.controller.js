@@ -21,7 +21,7 @@ angular.module('keystoneApp')
         console.log(error.message);
       } else {
         if (isAdmin) {
-          session.publish('myPublisherDiv', {width: 320, height: 240});
+          session.publish('myPublisherDiv', {width: 1000, height: 240});
         }
       }
     });
