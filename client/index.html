@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title></title>
+    <title>Keystone: akqa insights</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -55,6 +55,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/devicejs/lib/device.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -76,9 +77,13 @@
           <script src="app/spaces/spaces.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
+          <script src="components/devices/devices.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
+          <script src="components/rtcCamera/rtcCamera.directive.js"></script>
+          <script src="components/rtcCamera/rtcSnapshot/rtcSnapshot.directive.js"></script>
           <script src="components/socket/socket.service.js"></script>
+          <script src="components/webcamera/webcamera.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/keystone-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };

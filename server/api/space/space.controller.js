@@ -9,7 +9,7 @@ var client  = mqtt.connect('mqtt://test.mosquitto.org');
 //this function will set all the intial subscritpions at runt time of the app.
 //You'll have to come back to this because first a user must create a space.
 Space.find(function(err, space){
-  console.log(space);
+  // console.log(space);
   if(space.length !== 0){
     for(var i = 0; i <= space.length; i++){
       

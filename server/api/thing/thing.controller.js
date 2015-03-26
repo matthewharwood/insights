@@ -11,11 +11,39 @@
 
 var _ = require('lodash');
 var Thing = require('./thing.model');
+var mqtt    = require('mqtt');
+var client  = mqtt.connect('mqtt://test.mosquitto.org');
 
- 
+// Thing.find(function(err, thing){
+//   console.log(thing);
+//   if(thing.length !== 0){
+//     for(var i = 0; i <= thing.length; i++){
+      
+//       // console.log(thing[i].name);
+//       client.subscribe(thing[i].name);
+//     }  
+//   }
+// });
+client.subscribe('thebattery');
+console.log(client);
+client.on('message', function (topic, message) {
+  var newThing = new Thing();
+  newThing.name = message.toString('utf8');
+  console.log(newThing, 'newthing')
+  Thing.find({ name: newThing.name}, function(err, found){
+    console.log(typeof found, found, 'update');
+    if (err) { return handleError(res, err); }
+    if(found.length === 0) 
+      { 
+        Thing.create(newThing, function(err, message) {
+          console.log(message, 'created');
+          if(err) { return handleError(res, err); }
 
- 
-
+        }); 
+      }
+  });
+  
+});
 
 // Get list of things
 exports.index = function(req, res) {

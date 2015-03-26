@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('keystoneApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, Devices) {
     $scope.awesomeThings = [];
-
+    $scope.isMobile = Devices.isMobile();
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);

@@ -1,4 +1,25 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+<section class="hud-ui">
+  <nav>
+    <ul>
+      <li>keystone</li>
+      <li>&#9776;</li>
+    </ul>
+  </nav>
+  <rtc-snapshot></rtc-snapshot> 
+</section>
+
+<section class="wallpaper" ng-if="isMobile">
+  <figure>
+    <img ng-src="{{dummy.images}}"> 
+  </figure>
+</section>
+
+<section class="wallpaper" ng-if="!isMobile">
+  <rtc-camera ng-if="!isMobile"></rtc-camera>
+</section>
+<!-- <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
   <div class="container">
@@ -35,4 +56,4 @@
         <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
          <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
   </div>
-</footer>
+</footer> -->

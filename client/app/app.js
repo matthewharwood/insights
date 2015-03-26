@@ -9,8 +9,9 @@ angular.module('keystoneApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
-
+      .otherwise('/home');
+    $urlRouterProvider
+      .when('/', '/home');
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
