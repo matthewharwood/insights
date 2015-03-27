@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('keystoneApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Devices) {
+  .controller('MainCtrl', function ($scope, $http, socket, Devices, Speech) {
     $scope.awesomeThings = [];
     $scope.isMobile = Devices.isMobile();
     $http.get('/api/things').success(function(awesomeThings) {
@@ -25,12 +25,12 @@ angular.module('keystoneApp')
       socket.unsyncUpdates('thing');
     });
     //ann yang
-    
+
     $scope.newTodo = 'heyhey';
     var commands = {
       'hello *val': function(val){
         $scope.newTodo = val;
-        
+        Speech.speak(val);
         $scope.$apply();
       }
     }

@@ -1,0 +1,15 @@
+{
+  "branches":{
+    "0":{
+      "hello, please give me a name": "my name is /name/"
+    },
+    "1":{
+      "where am I from": "Ok, I'm from /location/"
+    },
+    "2":{
+      "what gender am I?": "Ok, I'm /gender/"
+    }
+  },
+  "greeting": "hello",
+  "full_greeting": "hello, my name is /name/, and I'm from /location/"
+}
