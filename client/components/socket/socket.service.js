@@ -30,7 +30,7 @@ angular.module('keystoneApp')
        */
       syncUpdates: function (modelName, array, cb) {
         cb = cb || angular.noop;
-
+        // console.log(modelName, array, cb);
         /**
          * Syncs item creation/updates on 'model:save'
          */
