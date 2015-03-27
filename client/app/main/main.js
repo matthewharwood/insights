@@ -12,12 +12,12 @@ angular.module('keystoneApp')
         url: '/:thing',
       })
       .state('main.thing.name', {
-        url: '/name',
+        url: '/1',
       })
       .state('main.thing.gender', {
-        url: '/gender',
+        url: '/2',
       })
       .state('main.thing.nationality', {
-        url: '/nationality',
+        url: '/3',
       });
   });

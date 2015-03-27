@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('keystoneApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Devices, $state, $timeout) {
+
+  .controller('MainCtrl', function ($scope, $http, socket, Devices, $state, $timeout,Speech) {
+
     $scope.awesomeThings = [];
 
     //this is to toggle different devices based on the device. 
@@ -41,45 +43,72 @@ angular.module('keystoneApp')
     //ann yang
 
     $scope.newTodo = 'heyhey';
-    var commands = {
-      'hello *val': function(val){
-        $scope.newTodo = val;
-        
-        $scope.$apply();
-        $state.go('main.thing.gender')
-        $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
-        
+    var commands = [
+      {
+        'hello *val': function(val){
+          $scope.newTodo = val;
+          Speech.speak(val);
+          $scope.$apply();
+          $state.go('main.thing.gender')
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        }
+      },
+      {
+        'friend you are *val': function(val){
+          $scope.newTodo = val;
+          
+          $scope.$apply();
+          $state.go('main.thing.nationality');
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        }
+      },
+      {
+        'friend you are from *val': function(val){
+          $scope.newTodo = val;
+          
+          $scope.$apply();
+          $state.go('main.thing.nationality');
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        }
       }
-    }
-    var commands2 = {
-      'friend you are *val': function(val){
-        $scope.newTodo = val;
-        
-        $scope.$apply();
-        $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
-        
-      }
-    }
+    ]
+    
     // Add our commands to annyang
     
 
     // Start listening.
     
     var enumerator = 0;
-    $scope.$on('$stateChangeSuccess', function(){
-        
-      switch (enumerator){
-        case 0:
-          enumerator++;
-          break;
-        case 1:
-          annyang.addCommands(commands);
-          annyang.start();
-        case 2:
-          annyang.addCommands(commands2);
-          annyang.start();
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+        console.log(toState.url);
+        switch(toState.url)
+          {
+          case '/1':
+            annyang.addCommands(commands[0]);
+            annyang.start();
+          case '/2':
+            annyang.addCommands(commands[1]);
+            annyang.start();
+          
+          case '/3':
+            annyang.addCommands(commands[2]);
+            annyang.start();
+          }
+      // switch (enumerator){
+      //   case 0:
+      //     enumerator = 1;
+      //     break;
+      //   case 1:
+      //     annyang.addCommands(commands);
+      //     annyang.start();
+      //   case 2:
+      //     annyang.addCommands(commands2);
+      //     annyang.start();
 
-      }
+      // }
 
 
         //get the route name
