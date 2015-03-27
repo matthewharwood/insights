@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('keystoneApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Devices, $state) {
+  .controller('MainCtrl', function ($scope, $http, socket, Devices, $state, $timeout) {
     $scope.awesomeThings = [];
 
     //this is to toggle different devices based on the device. 
@@ -46,6 +46,18 @@ angular.module('keystoneApp')
         $scope.newTodo = val;
         
         $scope.$apply();
+        $state.go('main.thing.gender')
+        $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+        
+      }
+    }
+    var commands2 = {
+      'friend you are *val': function(val){
+        $scope.newTodo = val;
+        
+        $scope.$apply();
+        $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+        
       }
     }
     // Add our commands to annyang
@@ -53,15 +65,23 @@ angular.module('keystoneApp')
 
     // Start listening.
     
-    var lock = false;
+    var enumerator = 0;
     $scope.$on('$stateChangeSuccess', function(){
         
-        if(lock){
-          console.log('starter');
+      switch (enumerator){
+        case 0:
+          enumerator++;
+          break;
+        case 1:
           annyang.addCommands(commands);
           annyang.start();
-        }
-        lock = true;
+        case 2:
+          annyang.addCommands(commands2);
+          annyang.start();
+
+      }
+
+
         //get the route name
         //excute timeline Timeline.branch[$state.name]
         //Timeline.branch[$state.name].init
