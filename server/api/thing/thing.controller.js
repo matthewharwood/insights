@@ -24,8 +24,8 @@ var client  = mqtt.connect('mqtt://test.mosquitto.org');
 //     }  
 //   }
 // });
-client.subscribe('thebattery');
-console.log(client);
+// client.subscribe('thebattery');
+console.log(client.subscribe('thebattery'));
 client.on('message', function (topic, message) {
   var newThing = new Thing();
   newThing.name = message.toString('utf8');

@@ -79,8 +79,11 @@ $hud-index: 100;
       font-size: 68px;
 
     }
-    span{
+    span.homepage{
       display: block;
+    }
+    span{
+      display: inline-block;
       &:first-child {
         margin-top:14px;
       }
