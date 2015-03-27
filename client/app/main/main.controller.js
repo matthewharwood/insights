@@ -55,6 +55,7 @@ angular.module('keystoneApp')
         //get the route name
         //excute timeline Timeline.branch[$state.name]
         //Timeline.branch[$state.name].init
+        //check database for properties
         ////Speech.speak()
         //// wait for Command
         //// when command has been met
