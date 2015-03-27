@@ -24,4 +24,19 @@ angular.module('keystoneApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+    //ann yang
+    
+    $scope.newTodo = 'heyhey';
+    var commands = {
+      'hello *val': function(val){
+        $scope.newTodo = val;
+        
+        $scope.$apply();
+      }
+    }
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+
+    // Start listening.
+    annyang.start();
   });
