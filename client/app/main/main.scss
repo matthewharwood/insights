@@ -18,11 +18,33 @@ $hud-index: 100;
     width: 100%;
     height: 55px;
     color: #fff;
-    background-color: rgba(100,100,100,0.25);
+    background-color: rgba(0, 60, 100, 0.15);
     overflow:hidden;
-
+    ul, li {
+      height: 55px;
+    }
   }
 }
+
+//navigation
+//
+.logo-fontface {
+  font-size: 24px;
+  float: left;
+  line-height: 55px;
+  margin-left: 24px;
+  font-weight: 700;
+}
+.navigation-hamburger{
+  font-size: 24px;
+  float: right;
+  line-height: 55px;
+  margin-right: 24px;
+}
+//
+//navigation
+
+
 
 
 .wallpaper {
@@ -30,7 +52,38 @@ $hud-index: 100;
   position: relative;
   height: 100%;
   display: block;
+  background: linear-gradient(135deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
   img{
     @extend .fullscreen-mobile;
+  }
+}
+
+// footer
+// 
+.footer-section {
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  left:0;
+  right:0;
+  height: 72px;
+  background-color: #fff;
+  text-align: center;
+  p {
+     color: #ccc;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 22px;
+    &.pagenation {
+      font-size: 68px;
+
+    }
+    span{
+      display: block;
+      &:first-child {
+        margin-top:14px;
+      }
+    }
   }
 }

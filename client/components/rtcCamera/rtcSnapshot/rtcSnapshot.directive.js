@@ -6,7 +6,10 @@ angular.module('keystoneApp')
       templateUrl: 'components/rtcCamera/rtcSnapshot/rtcSnapshot.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
-        
+        scope.loader = false;
+        scope.switchToLoader = function() {
+            scope.loader = true;
+        };
         scope.isMobile = Devices.isMobile();
 
       }

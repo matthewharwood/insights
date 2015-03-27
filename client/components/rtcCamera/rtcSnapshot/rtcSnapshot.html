@@ -1,10 +1,20 @@
 
+<div class="fileinputs" ng-hide="dummy.images.length > 0" ng-click="switchToLoader()">
     <input type="file" 
-           
+           class="file" 
            ng-model="dummy.images" 
            accept="image/*" 
            capture="camera" 
            file-reader />
-    <!-- <button ng-switch-when="true" ng-click="takePic()">hey</button> -->
 
-<button ng-click="superclick()">take button</button>
+    <div class="fakefile" ng-if="!loader">
+        <input type="button" value="+" />
+    </div>
+   
+  
+   
+</div>
+
+<div class="fileinputs audio-btn" ng-show="dummy.images.length > 0">
+    <i class="fa fa-microphone center-mic"></i>
+</div>

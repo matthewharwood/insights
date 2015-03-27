@@ -2,12 +2,13 @@
 
 <section class="hud-ui">
   <nav>
-    <ul>
-      <li>keystone</li>
-      <li>&#9776;</li>
+    <ul class="list-unstyled">
+      <li class="logo-fontface">keystone</li>
+      <li class="navigation-hamburger">&#9776;</li>
     </ul>
   </nav>
-  <rtc-snapshot></rtc-snapshot> 
+  <rtc-snapshot></rtc-snapshot>
+  <h1 ng-repeat="thing in awesomeThings">{{thing.name}}</h1>
 </section>
 
 <section class="wallpaper" ng-if="isMobile">
@@ -19,6 +20,16 @@
 <section class="wallpaper" ng-if="!isMobile">
   <rtc-camera ng-if="!isMobile"></rtc-camera>
 </section>
+<footer class="footer-section">
+  <p ng-hide="dummy.images.length > 0">
+    <span>we help you inventory every</span>
+    <span>object in your life</span>
+  </p>
+  <p class="pagenation" ng-show="dummy.images.length > 0">
+   <span>&#x02218;</span>
+   <span>&#x02299;</span>
+  </p>
+</footer>
 <!-- <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
