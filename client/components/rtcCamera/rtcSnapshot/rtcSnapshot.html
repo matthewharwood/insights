@@ -1,5 +1,5 @@
 
-<div class="fileinputs" ng-hide="dummy.images.length > 0" ng-click="switchToLoader()" >
+<div class="fileinputs" ng-click="switchToLoader()" >
     <input type="file" 
            class="file" 
            ng-model="dummy.images" 
@@ -15,6 +15,13 @@
    
 </div>
 
-<div class="fileinputs audio-btn"  ui-sref="main.thing.name" ng-click="startYang()">
+<div class="fileinputs audio-btn"  ng-if="$state.is('main.thing');" ng-click="startYangDefault()" >
     <i class="fa fa-microphone center-mic"></i>
 </div>
+<div class="fileinputs audio-btn"  ng-if="$state.is('main.thing.gender');" ng-click="startYang()" >
+    <i class="fa fa-microphone center-mic"></i>
+</div>
+<div class="fileinputs audio-btn"  ng-if="$state.is('main.thing.nationality');" ng-click="startYang()" >
+    <i class="fa fa-microphone center-mic"></i>
+</div>
+

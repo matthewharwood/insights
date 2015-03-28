@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('keystoneApp')
-  .directive('rtcSnapshot', function (Devices) {
+  .directive('rtcSnapshot', function (Devices, $state) {
     return {
       templateUrl: 'components/rtcCamera/rtcSnapshot/rtcSnapshot.html',
       restrict: 'EA',
@@ -10,12 +10,9 @@ angular.module('keystoneApp')
         scope.switchToLoader = function() {
             scope.loader = true;
         };
-        // scope.startYang = function() {
-        //     console.log($state);
-        //     $state.go('main.thing.timeline', ({number: }))
-        // }
-        scope.isMobile = Devices.isMobile();
 
+        scope.isMobile = Devices.isMobile();
+        scope.$state = $state;
       }
     };
   });

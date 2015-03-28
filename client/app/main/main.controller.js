@@ -5,110 +5,63 @@ angular.module('keystoneApp')
   .controller('MainCtrl', function ($scope, $http, socket, Devices, $state, $timeout,Speech) {
 
     $scope.awesomeThings = [];
+    $scope.newTodo = '';
+
 
     //this is to toggle different devices based on the device. 
     //example being the add button... it's a bit hacky.
     $scope.isMobile = Devices.isMobile();
     $scope.selectedIndex = 0;
+
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
 
+      // 0. init default 
       socket.syncUpdates('thing', $scope.awesomeThings, function(){
           // this callback allows a redirect 
           // to the latest thing being snapped
           // when a picture has been snapped redirect to edit it.
           $scope.selectedIndex = $scope.awesomeThings.length-1;
-          console.log('selectedindex', $scope.selectedIndex);
           $state.go('main.thing', {thing: $scope.awesomeThings[$scope.selectedIndex].name});
+          
         
       });
    
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
     //ann yang
-
-    $scope.newTodo = 'heyhey';
-    var commands = [
-      {
-        'hello *val': function(val){
-          $scope.newTodo = val;
-          Speech.speak(val);
-          $scope.$apply();
-          $state.go('main.thing.gender')
-          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
-          
-        }
-      },
-      {
-        'friend you are *val': function(val){
-          $scope.newTodo = val;
-          
-          $scope.$apply();
-          $state.go('main.thing.nationality');
-          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
-          
-        }
-      },
-      {
-        'friend you are from *val': function(val){
-          $scope.newTodo = val;
-          
-          $scope.$apply();
-          $state.go('main.thing.nationality');
-          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
-          
-        }
-      }
-    ]
     
-    // Add our commands to annyang
-    
-
     // Start listening.
-    
+    $scope.startYangDefault = function(){
+      $state.go('main.thing.name');
+      annyang.start();
+    };
+
+    $scope.startYang = function() {
+      annyang.start();
+    };
+
+   
     var enumerator = 0;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-        console.log(toState.url);
+        
+        // 1. init
         switch(toState.url)
           {
           case '/1':
+            Speech.speak('please give me a name');
             annyang.addCommands(commands[0]);
-            annyang.start();
+            break;
           case '/2':
+            Speech.speak('What gender am I?');
             annyang.addCommands(commands[1]);
-            annyang.start();
-          
+            break;
           case '/3':
+            Speech.speak('And where am I from?');
             annyang.addCommands(commands[2]);
-            annyang.start();
+            break;
           }
-      // switch (enumerator){
-      //   case 0:
-      //     enumerator = 1;
-      //     break;
-      //   case 1:
-      //     annyang.addCommands(commands);
-      //     annyang.start();
-      //   case 2:
-      //     annyang.addCommands(commands2);
-      //     annyang.start();
 
-      // }
 
 
         //get the route name
@@ -122,4 +75,57 @@ angular.module('keystoneApp')
         //// Submit data to Thing mongo
 
     });
+    //02 end redirect
+    var commands = [
+      {
+        'your name is :name': function(name){
+          $scope.newTodo = name;
+          Speech.speak(name);
+          $scope.$apply();
+          $state.go('main.thing.gender')
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        },
+      },
+      {
+        ':name you are :gender': function(name, gender){
+          $scope.newTodo = name + gender;
+          Speech.speak(gender);
+          $scope.$apply();
+          $state.go('main.thing.nationality');
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        }
+      },
+      {
+        ':name you are from :location': function(name, location){
+          $scope.newTodo = name + location;
+          Speech.speak(location);
+          $scope.$apply();
+          $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
+          
+        }
+      }
+    ]
+    
+    // Add our commands to annyang
+    
+
+    
+    // Add this in there to delete from DB so I dont have to do it from ROBOMONGO
+    // $scope.addThing = function() {
+    //   if($scope.newThing === '') {
+    //     return;
+    //   }
+    //   $http.post('/api/things', { name: $scope.newThing });
+    //   $scope.newThing = '';
+    // };
+
+    // $scope.deleteThing = function(thing) {
+    //   $http.delete('/api/things/' + thing._id);
+    // };
+
+    // $scope.$on('$destroy', function () {
+    //   socket.unsyncUpdates('thing');
+    // });
   });
