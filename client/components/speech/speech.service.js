@@ -5,6 +5,7 @@ angular.module('keystoneApp')
     var Speech = {};
     Speech.voices = [];
     Speech.messages = [];
+
     Speech.setMsg = function (msg) {
       if (!SpeechSynthesisUtterance) {
         throw new Error("Speech Synthesis API not available");
@@ -14,6 +15,7 @@ angular.module('keystoneApp')
         return _msg;
       }
     };
+
     Speech.getMessages = function (start, end) {
       if (!arguments.length) {
         return Speech.messages;
@@ -23,6 +25,7 @@ angular.module('keystoneApp')
       }
       return arguments.length === 1 ? Speech.messages[start] : Speech.messages.slice(start, end);
     };
+    
     Speech.setCurrentParams = function(gender){
       for (var param in Speech.params[gender]){
         Speech.currentParams[param] = Speech.params[gender][param]()

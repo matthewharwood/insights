@@ -16,7 +16,7 @@ angular.module('keystoneApp')
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
 
-      // 0. init default 
+// 0. init default 
       socket.syncUpdates('thing', $scope.awesomeThings, function(){
           // this callback allows a redirect 
           // to the latest thing being snapped
@@ -30,7 +30,7 @@ angular.module('keystoneApp')
     });
 
     //ann yang
-    
+
     // Start listening.
     $scope.startYangDefault = function(){
       $state.go('main.thing.name');
@@ -45,7 +45,7 @@ angular.module('keystoneApp')
     var enumerator = 0;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
         
-        // 1. init
+// 1. init
         switch(toState.url)
           {
           case '/1':
@@ -75,7 +75,7 @@ angular.module('keystoneApp')
         //// Submit data to Thing mongo
 
     });
-    //02 end redirect
+//02 end redirect
     var commands = [
       {
         'your name is :name': function(name){
@@ -90,7 +90,7 @@ angular.module('keystoneApp')
       {
         ':name you are :gender': function(name, gender){
           $scope.newTodo = name + gender;
-          Speech.speak(gender);
+          Speech.speak('Okay, I am ' + gender);
           $scope.$apply();
           $state.go('main.thing.nationality');
           $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
@@ -111,7 +111,7 @@ angular.module('keystoneApp')
     // Add our commands to annyang
     
 
-    
+
     // Add this in there to delete from DB so I dont have to do it from ROBOMONGO
     // $scope.addThing = function() {
     //   if($scope.newThing === '') {
@@ -121,11 +121,11 @@ angular.module('keystoneApp')
     //   $scope.newThing = '';
     // };
 
-    // $scope.deleteThing = function(thing) {
-    //   $http.delete('/api/things/' + thing._id);
-    // };
+    $scope.deleteThing = function(thing) {
+      $http.delete('/api/things/' + thing._id);
+    };
 
-    // $scope.$on('$destroy', function () {
-    //   socket.unsyncUpdates('thing');
-    // });
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('thing');
+    });
   });

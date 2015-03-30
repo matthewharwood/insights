@@ -8,7 +8,7 @@
     </ul>
   </nav>
   <rtc-snapshot></rtc-snapshot>
-  <h1 ng-repeat="thing in awesomeThings">{{thing.name}}</h1>
+  <h1 ng-repeat="thing in awesomeThings" >{{thing.name}} <button ng-click="deleteThing(thing)" type="button">&times;</button></h1>
   <h2>{{newTodo}}</h2>
 </section>
 
