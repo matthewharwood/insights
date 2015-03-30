@@ -73,6 +73,7 @@ exports.create = function(req, res) {
 
 // Updates an existing thing in the DB.
 exports.update = function(req, res) {
+  console.log(req.body._id, 'request', req.params);
   if(req.body._id) { delete req.body._id; }
   Thing.findById(req.params.id, function (err, thing) {
     if (err) { return handleError(res, err); }

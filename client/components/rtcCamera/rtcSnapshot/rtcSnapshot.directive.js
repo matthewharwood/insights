@@ -10,7 +10,7 @@ angular.module('keystoneApp')
         scope.switchToLoader = function() {
             scope.loader = true;
         };
-
+        
         scope.isMobile = Devices.isMobile();
         scope.$state = $state;
       }

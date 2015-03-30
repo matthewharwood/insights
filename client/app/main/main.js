@@ -19,5 +19,8 @@ angular.module('keystoneApp')
       })
       .state('main.thing.nationality', {
         url: '/3',
+      })
+      .state('main.thing.introduce', {
+        url: '/intro',
       });
   });

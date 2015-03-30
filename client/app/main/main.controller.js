@@ -6,8 +6,8 @@ angular.module('keystoneApp')
 
     $scope.awesomeThings = [];
     $scope.newTodo = '';
-
-
+    $scope.$state= $state;
+    console.log($scope.$state)
     //this is to toggle different devices based on the device. 
     //example being the add button... it's a bit hacky.
     $scope.isMobile = Devices.isMobile();
@@ -21,6 +21,8 @@ angular.module('keystoneApp')
           // this callback allows a redirect 
           // to the latest thing being snapped
           // when a picture has been snapped redirect to edit it.
+          
+ 
           $scope.selectedIndex = $scope.awesomeThings.length-1;
           $state.go('main.thing', {thing: $scope.awesomeThings[$scope.selectedIndex].name});
           
@@ -49,11 +51,11 @@ angular.module('keystoneApp')
         switch(toState.url)
           {
           case '/1':
-            Speech.speak('please give me a name');
+            Speech.speak('Please, give me a name');
             annyang.addCommands(commands[0]);
             break;
           case '/2':
-            Speech.speak('What gender am I?');
+            Speech.speak('Now what gender am I?');
             annyang.addCommands(commands[1]);
             break;
           case '/3':
@@ -80,7 +82,7 @@ angular.module('keystoneApp')
       {
         'your name is :name': function(name){
           $scope.newTodo = name;
-          Speech.speak(name);
+          Speech.speak('Okay, My name is '+ name);
           $scope.$apply();
           $state.go('main.thing.gender')
           $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
@@ -100,8 +102,9 @@ angular.module('keystoneApp')
       {
         ':name you are from :location': function(name, location){
           $scope.newTodo = name + location;
-          Speech.speak(location);
+          Speech.speak('awesome, I am from' + location);
           $scope.$apply();
+          $state.go('main.thing.introduce');
           $timeout(function(){annyang.abort(); console.log('hey abort')},1000)
           
         }
@@ -128,4 +131,24 @@ angular.module('keystoneApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+    $scope.introduce = function() {
+      var lastIdx = $scope.awesomeThings.length-1;
+      
+      $scope.currentThing = {
+        _id: $scope.awesomeThings[lastIdx]._id,
+        name: $scope.awesomeThings[lastIdx].name,
+        power: true,
+      };
+      console.log($scope.currentThing, 'currentthing');
+      $http.patch('/api/things/' + $scope.awesomeThings[lastIdx]._id, $scope.currentThing).success(function (thing) {
+        console.log(thing, 'successful Patch');
+        $scope.awesomeThings = thing;
+      })
+    };
   });
+
+
+
+
+

@@ -8,8 +8,9 @@
     </ul>
   </nav>
   <rtc-snapshot></rtc-snapshot>
-  <h1 ng-repeat="thing in awesomeThings" >{{thing.name}} <button ng-click="deleteThing(thing)" type="button">&times;</button></h1>
+  <h1 ng-repeat="thing in awesomeThings" >{{thing.name}}{{thing.power}} <button ng-click="deleteThing(thing)" type="button">&times;</button></h1>
   <h2>{{newTodo}}</h2>
+ <!--  <div ng-if="$state.is('main.latest')">heyhey</div> -->
 </section>
 
 <section class="wallpaper" ng-if="isMobile">
@@ -31,6 +32,7 @@
    
   </p>
 </footer>
+
 <!-- <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
