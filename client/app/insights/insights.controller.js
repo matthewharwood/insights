@@ -2,9 +2,10 @@
 
 angular.module('keystoneApp')
   .controller('InsightsCtrl', function ($scope, $http, Auth) {
-    var apiKey = '45185552';
-var sessionId = "2_MX40NTE4NTU1Mn5-MTQyNjc5NDkyMzQyNH5aVFN1bitIZDF5bC84a0JaQWcrRzBHWmJ-fg";
-      var token = "T1==cGFydG5lcl9pZD00NTE4NTU1MiZzaWc9ZDkyOGI0YTQ1ODVmOGFiNTM0YWY0NmU3Mjc2YzU5ODY0YjQxMzlhZDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5URTROVFUxTW41LU1UUXlOamM1TkRreU16UXlOSDVhVkZOMWJpdElaREY1YkM4NGEwSmFRV2NyUnpCSFdtSi1mZyZjcmVhdGVfdGltZT0xNDI2Nzk0OTU3Jm5vbmNlPTAuNTc0MzAyODY1ODMzNDIyOA==";    var session = OT.initSession(apiKey, sessionId);
+ var apiKey = "45195902";
+    var sessionId = "2_MX40NTE5NTkwMn5-MTQyNzgyNTQ3NTI5Mn56UW96NFJ3bkhRZWM4Uml0bWtUekJWOGR-fg";
+    var token = "T1==cGFydG5lcl9pZD00NTE5NTkwMiZzaWc9OGQyNWJlM2IzMzEyNzllY2Y0ODNlZWE2NDE1ZWZmNTZhNDg3YjJjMDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5URTVOVGt3TW41LU1UUXlOemd5TlRRM05USTVNbjU2VVc5Nk5GSjNia2hSWldNNFVtbDBiV3RVZWtKV09HUi1mZyZjcmVhdGVfdGltZT0xNDI3ODI1NDkzJm5vbmNlPTAuMjE3ODI0NjA0MTc2NTU1NDc=";    
+    var session = OT.initSession(apiKey, sessionId);
     var isAdmin = Auth.isAdmin();
     var canvas = document.getElementById('touchCanvas');
     var ctx = canvas.getContext('2d');
