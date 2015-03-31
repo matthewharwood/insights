@@ -22,5 +22,11 @@ angular.module('keystoneApp')
       })
       .state('main.thing.introduce', {
         url: '/intro',
+      })
+       .state('main.thing.sebintroduce', {
+        url: '/seb',
+      })
+      .state('main.thing.reintro', {
+        url: '/reintro',
       });
   });

@@ -7,7 +7,7 @@ angular.module('keystoneApp')
     $scope.awesomeThings = [];
     $scope.newTodo = '';
     $scope.$state= $state;
-    console.log($scope.$state)
+    
     //this is to toggle different devices based on the device. 
     //example being the add button... it's a bit hacky.
     $scope.isMobile = Devices.isMobile();
@@ -144,8 +144,38 @@ angular.module('keystoneApp')
       $http.patch('/api/things/' + $scope.awesomeThings[lastIdx]._id, $scope.currentThing).success(function (thing) {
         console.log(thing, 'successful Patch');
         $scope.awesomeThings = thing;
+        $state.go('main.thing.sebintroduce', {thing: 'seb00123'}, {reload: true});
       })
     };
+
+    $scope.sebIntroduce = function() {
+
+      console.log($scope.currentThing, 'currentthing');
+      $http.post('/api/things', { name: 'seb00123'}).
+        success(function(data, status, headers, config) {
+          $scope.awesomeThings = data;
+          $state.go('main.thing.reintro', {thing: '00000000a24c6153'}, {reload: true});
+        });
+
+    };
+
+    $scope.reIntroduce = function() {
+      var firstIdx = 0;
+      
+      $scope.currentThing = {
+        _id: $scope.awesomeThings[firstIdx]._id,
+        name: $scope.awesomeThings[firstIdx].name,
+        power: false,
+      };
+
+      console.log($scope.currentThing, 'currentthing');
+      $http.patch('/api/things/' + $scope.awesomeThings[firstIdx]._id, $scope.currentThing).success(function (thing) {
+        console.log(thing, 'successful Patch reintro');
+        $scope.awesomeThings = thing;
+      })
+    };
+
+
   });
 
 
