@@ -67,7 +67,7 @@ angular.module('keystoneApp')
           _msg.voice = getVoice('Google UK English Female');
         }
         else if (origin == "germany" && gender == "male") {
-          _msg.voice = getVoice('Google Deutsch');
+          _msg.voice = getVoice('Carmit');
         } else if (origin == "germany" && gender == "female") {
           _msg.voice = getVoice('Anna')
         }
