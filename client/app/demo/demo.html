@@ -1,0 +1,26 @@
+
+
+<!-- take a picture -->
+<demo-input-field>
+    <div class="fakefile" ng-click="nextStep()" id="next-step">
+        <input type="button" value="+" />
+    </div>
+</demo-input-field >
+
+</div>    
+<div ng-if="$state.is('demo.step')">
+  <div ng-repeat="(key, audio) in audioClips" >
+    <header ng-show="$index == $state.params.id">
+      <h1 ng-hide="$index === 0">{{$index}}</h1>
+      <h2>{{audio.title}}{{audio.input}}</h2>
+      <h3>{{audio.desc}}</h3>
+    </header>
+    <div audios idx="$index" code="audio.src" ng-hide="true"></div>
+  </div>
+</div>
+<div ng-if="$state.is('demo.add')">
+  <button ng-click='submitSteven()'>click to submit steven</button>
+  <button ng-click='submitSebastian()'>click to submit Seb</button>
+  <button ng-click='introSteven()'>click to submit intro</button>
+</div>
+

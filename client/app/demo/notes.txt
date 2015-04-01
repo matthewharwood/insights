@@ -1,0 +1,72 @@
+<!-- 1. Give me a name -->
+<audio controls id="foo1">
+  <source src="../assets/audio/_1givemeaname.ogg" type="audio/ogg" >
+</audio>
+
+
+<!-- 1. Ding Listening -->
+<audio controls>
+  <source src="../assets/audio/_0on.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 1. Ding Off -->
+<audio controls>
+  <source src="../assets/audio/_0off.ogg" type="audio/ogg">
+</audio>
+
+
+
+<!-- 2. Alright I'm steven  -->
+<audio controls>
+  <source src="../assets/audio/_2alrightimsteven.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 3. Choose a gender?  -->
+<audio controls>
+  <source src="../assets/audio/_3chooseagender.ogg" type="audio/ogg">
+</audio>
+
+
+
+<!-- 3a. Ding Listening -->
+<audio controls>
+  <source src="../assets/audio/_0on.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 3b. Ding Off -->
+<audio controls>
+  <source src="../assets/audio/_0off.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 4. Choose a gender?  -->
+<audio controls>
+  <source src="../assets/audio/_4iamsteven.ogg" type="audio/ogg">
+</audio>
+
+<!-- 5. Choose a location?  -->
+<audio controls>
+  <source src="../assets/audio/_5whereamifrom.ogg" type="audio/ogg">
+</audio>
+
+
+
+<!-- 5a. Ding Listening -->
+<audio controls>
+  <source src="../assets/audio/_0on.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 5b. Ding Off -->
+<audio controls>
+  <source src="../assets/audio/_0off.ogg" type="audio/ogg">
+</audio>
+
+
+<!-- 6. excellent I'm from london  -->
+<audio controls>
+  <source src="../assets/audio/_6fromlondon.ogg" type="audio/ogg">
+</audio>
