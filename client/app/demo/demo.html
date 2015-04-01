@@ -1,26 +1,46 @@
-
+<nav class="demo-nav">
+  <ul class="list-unstyled">
+    <li class="logo-fontface" ng-click="refreshDemo()">keystone</li>
+    <li class="navigation-hamburger" ng-click="opendrawer()" style="z-index:9999999999;">&#9776;</li>
+  </ul>
+</nav>
+<section class="drawer-container" ng-show="open">
+  <ul>
+    <li ng-repeat="thing in awesomeThings">{{thing}} <button ng-click="deleteThing(thing)">&times;</button></li>
+  </ul>
+</section>
 
 <!-- take a picture -->
-<demo-input-field>
-    <div class="fakefile" ng-click="nextStep()" id="next-step">
-        <input type="button" value="+" />
+<section class="action-section">
+  <demo-input-field >
+      <div class="fakefile"  id="next-step" ng-if="!$state.is('demo.add')">
+          <input type="button" value="+" />
+      </div>
+      <div class="fakefile" ng-click="submitData()" id="next-step" ng-if="$state.is('demo.add')">
+          <input type="button" value="+" />
+      </div>
+  </demo-input-field >
+</section>
+
+<section class="demo-wallpaper" >
+  <figure>
+    <img ng-src="{{dummy.images}}"> 
+  </figure>
+</section>
+
+
+<section class="info-layer">
+  <div ng-if="$state.is('demo.step')" style="z-index:10001; position:relative" >
+    <div ng-repeat="(key, audio) in audioClips" >
+      <header ng-show="$index == $state.params.id" class="audio-description">
+        <h1 ng-hide="$index === 0">{{$index}}</h1>
+        <h2>{{audio.title}}{{audio.input}}</h2>
+        <h3>{{audio.desc}}</h3>
+      </header>
+      <div audios idx="$index" code="audio.src" ng-show="$index == $state.params.id" ></div>
+      <button ng-show="$index == $state.params.id" ng-click="nextStep()">next</button>
     </div>
-</demo-input-field >
-
-</div>    
-<div ng-if="$state.is('demo.step')">
-  <div ng-repeat="(key, audio) in audioClips" >
-    <header ng-show="$index == $state.params.id">
-      <h1 ng-hide="$index === 0">{{$index}}</h1>
-      <h2>{{audio.title}}{{audio.input}}</h2>
-      <h3>{{audio.desc}}</h3>
-    </header>
-    <div audios idx="$index" code="audio.src" ng-hide="true"></div>
   </div>
-</div>
-<div ng-if="$state.is('demo.add')">
-  <button ng-click='submitSteven()'>click to submit steven</button>
-  <button ng-click='submitSebastian()'>click to submit Seb</button>
-  <button ng-click='introSteven()'>click to submit intro</button>
-</div>
+  
 
+</section> 

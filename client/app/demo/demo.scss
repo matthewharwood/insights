@@ -1,4 +1,67 @@
+/* Standard syntax */
+
 h1,h2,h3,h4,h5,h6,p {
   margin: 0;
   padding: 0;
+}
+h1{
+  font-size: 19px;
+
+}
+h2 {
+    font-size: 16px;
+    font-weight: 700;
+}
+h3 {
+  font-style: italic;
+  font-size: 21px;
+}
+.drawer-container {
+  height: 100%;
+  width: 100%;
+  background: rgba(255,255,255,.9);
+  z-index: 11000;
+  padding: 60px;
+}
+
+.demo-bg {
+    background: linear-gradient(135deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+
+}
+.demo-wallpaper {
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  display: block;
+  background: linear-gradient(135deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+  opacity: .8;
+  img{
+    @extend .fullscreen-mobile;
+  }
+}
+.demo-nav{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  color: #fff;
+  background-color: rgba(0, 60, 100, 0.15);
+  overflow: hidden;
+  z-index: 10000;
+}
+
+.action-section {
+  position:fixed; height: 100%; width:100%; z-index: 5000;
+}
+.info-layer {
+  z-index: 100;
+  height: 100%;
+  padding: 90px 60px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.audio-description {
+  transition: all .35s ease-out;
 }
