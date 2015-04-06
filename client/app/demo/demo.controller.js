@@ -94,7 +94,7 @@ angular.module('keystoneApp')
       }
 
       $state.go('demo.step',{id: count});
-      // $('.step-' + count)[0].play();
+      $('.step-' + count)[0].play();
       
       count++;
     }
@@ -169,6 +169,15 @@ angular.module('keystoneApp')
         case 2:
           console.log('introsteven')
           $scope.introSteven();
+          break;
+        case 3:
+          console.log('lampOn')
+          $http.get('/api/mqtt/lampOn').success(function(data, status, headers, config) {});
+          break;
+        case 4:
+          console.log('lampOff')
+          $http.get('/api/mqtt/lampOff').success(function(data, status, headers, config) {});
+          break;
       }
       submitCounter++;
     }
@@ -182,12 +191,12 @@ angular.module('keystoneApp')
     restrict: 'A',
     scope: { code:'=', idx: '=' },
     replace: true,
-    template: '<audio controls class="step-{{idx}}"><source ng-src="{{url}}" type="audio/ogg"></audio>',
+    template: '<audio controls class="step-{{idx}}"><source ng-src="{{url}}" type="audio/mpeg"></audio>',
     link: function (scope) {
         console.log(scope.idx)
         scope.$watch('code', function (newVal, oldVal) {
            if (newVal !== undefined) {
-               scope.url = $sce.trustAsResourceUrl("../assets/audio/" + newVal + '.ogg');
+               scope.url = $sce.trustAsResourceUrl("../assets/audio/" + newVal + '.mp3');
            }
         });
     }

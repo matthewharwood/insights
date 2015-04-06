@@ -26,11 +26,11 @@ var options = {
 
 // Setup server
 var app = express();
-if(config.env === 'production') {
-  var server = require('https').createServer(options, app);
-} else {
+// if(config.env === 'production') {
+//   var server = require('https').createServer(options, app);
+// } else {
   var server = require('http').createServer(app);  
-}
+// }
 
 var socketio = require('socket.io')(server, {
   serveClient: (config.env === 'production') ? false : true,

@@ -13,7 +13,7 @@
 <!-- take a picture -->
 <section class="action-section">
   <demo-input-field >
-      <div class="fakefile"  id="next-step" ng-if="!$state.is('demo.add')">
+      <div class="fakefile" ng-click="nextStep()" id="next-step" ng-if="!$state.is('demo.add')">
           <input type="button" value="+" />
       </div>
       <div class="fakefile" ng-click="submitData()" id="next-step" ng-if="$state.is('demo.add')">
@@ -30,15 +30,15 @@
 
 
 <section class="info-layer">
-  <div ng-if="$state.is('demo.step')" style="z-index:10001; position:relative" >
+  <div ng-if="$state.is('demo.step')">
     <div ng-repeat="(key, audio) in audioClips" >
       <header ng-show="$index == $state.params.id" class="audio-description">
         <h1 ng-hide="$index === 0">{{$index}}</h1>
         <h2>{{audio.title}}{{audio.input}}</h2>
         <h3>{{audio.desc}}</h3>
       </header>
-      <div audios idx="$index" code="audio.src" ng-show="$index == $state.params.id" ></div>
-      <button ng-show="$index == $state.params.id" ng-click="nextStep()">next</button>
+      <div audios idx="$index" code="audio.src" ng-hide="true"></div>
+      <!-- <button ng-show="$index == $state.params.id" ng-click="nextStep()">next</button> -->
     </div>
   </div>
   

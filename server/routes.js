@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   // Insert routes below
   app.use('/api/mqtt', require('./api/mqtt'));
-  app.use('/mqtt', require('./api/mqtt'));
+  // app.use('/mqtt', require('./api/mqtt'));
   app.use('/api/spaces', require('./api/space'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));

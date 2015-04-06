@@ -71,6 +71,12 @@ exports.create = function(req, res) {
   });
 };
 
+// Creates a new thing in the DB.
+exports.mqttLight = function(req, res) {
+  console.log(req.body);
+  client.publish('thebattery', 'Hello mqtt');
+};
+
 // Updates an existing thing in the DB.
 exports.update = function(req, res) {
   console.log(req.body._id, 'request', req.params);
